@@ -1,5 +1,27 @@
 {
-    "name": "os-adspeedup",
-    "manifest-version": 3,
-    "version": "1.0.0"
+  "name": "OS Ad Speedup",
+  "description": "Open source version of the Youtube Ad Speedup extension - Play ads 16x faster",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "content_scripts": [
+    {
+      "matches": ["https://*.youtube.com/*"],
+      "js": ["main.js"]
+    }
+  ],
+  "action": {
+    "default_title": "Open source version of the Youtube Ad Speedup extension - Play ads 16x faster",
+    "default_icon": {
+      "16": "/icons/16x.png",
+      "32": "/icons/32x.png",
+      "48": "/icons/48x.png",
+      "128": "/icons/128x.png"
+    }
+  },
+  "icons": {
+    "16": "/icons/16x.png",
+    "32": "/icons/32x.png",
+    "48": "/icons/48x.png",
+    "128": "/icons/128x.png"
+  }
 }
