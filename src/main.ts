@@ -4,20 +4,20 @@ const IS_SKIP_AD = true;
 let currentMuted = false;
 let currentPlaybackRate = 1;
 
-window.addEventListener('load', function () {
-  run();
+window.addEventListener('load', () => {
+  init();
 });
 
-function run() {
+const init = () => {
   const movie_player = document.querySelector<HTMLDivElement>('#movie_player');
   const video = document.querySelector<HTMLVideoElement>('#movie_player video');
 
   if (!movie_player || !video) {
-    setTimeout(run, 100);
+    setTimeout(init, 100);
     return;
   }
 
-  new MutationObserver((m) => adSpeedup(m, movie_player, video)).observe(
+  new MutationObserver((m) => handleMutations(m, movie_player, video)).observe(
     movie_player,
     {
       attributeFilter: ['class', 'style'],
@@ -25,9 +25,9 @@ function run() {
       subtree: true,
     },
   );
-}
+};
 
-const adSpeedup = (
+const handleMutations = (
   mutations: MutationRecord[],
   movie_player: HTMLDivElement,
   video: HTMLVideoElement,
