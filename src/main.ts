@@ -4,29 +4,34 @@ const IS_SKIP_AD = true;
 let currentMuted = false;
 let currentPlaybackRate = 1;
 
-const movie_player = document.querySelector<HTMLDivElement>('#movie_player');
-const video = document.querySelector<HTMLVideoElement>('#movie_player video');
-
 window.addEventListener('load', function () {
   run();
 });
 
 function run() {
+  const movie_player = document.querySelector<HTMLDivElement>('#movie_player');
+  const video = document.querySelector<HTMLVideoElement>('#movie_player video');
+
   if (!movie_player || !video) {
     setTimeout(run, 100);
     return;
   }
 
-  new MutationObserver(adSpeedup).observe(movie_player, {
-    attributeFilter: ['class', 'style'],
-    attributes: true,
-    subtree: true,
-  });
+  new MutationObserver((m) => adSpeedup(m, movie_player, video)).observe(
+    movie_player,
+    {
+      attributeFilter: ['class', 'style'],
+      attributes: true,
+      subtree: true,
+    },
+  );
 }
 
-const adSpeedup: MutationCallback = (mutations) => {
-  if (!movie_player || !video) return;
-
+const adSpeedup = (
+  mutations: MutationRecord[],
+  movie_player: HTMLDivElement,
+  video: HTMLVideoElement,
+) => {
   if (IS_SKIP_AD) {
     mutations.forEach((mutation) => {
       if (mutation.attributeName !== 'style') return;
