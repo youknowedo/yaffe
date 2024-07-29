@@ -1,6 +1,6 @@
 {
-  "name": "OS Ad Speedup",
-  "description": "Open source version of the Youtube Ad Speedup extension - Play ads 16x faster",
+  "name": "YAFFE",
+  "description": "Yet Another Fast Forward Extension. Play ads 16x faster.",
   "version": "1.0.0",
   "manifest_version": 3,
   "content_scripts": [
@@ -10,7 +10,7 @@
     }
   ],
   "action": {
-    "default_title": "Open source version of the Youtube Ad Speedup extension - Play ads 16x faster",
+    "default_title": "Yet Another Fast Forward Extension. Play ads 16x faster.",
     "default_icon": {
       "16": "/icons/16x.png",
       "32": "/icons/32x.png",
